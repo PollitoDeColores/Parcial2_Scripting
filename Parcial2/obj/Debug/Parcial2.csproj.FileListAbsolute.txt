@@ -1,0 +1,7 @@
+E:\MSI\PROJECT. Myself\Material de Estudio\2023-1\Scripting\Parcial2_Scripting\Parcial2\bin\Debug\Parcial2.exe.config
+E:\MSI\PROJECT. Myself\Material de Estudio\2023-1\Scripting\Parcial2_Scripting\Parcial2\bin\Debug\Parcial2.exe
+E:\MSI\PROJECT. Myself\Material de Estudio\2023-1\Scripting\Parcial2_Scripting\Parcial2\bin\Debug\Parcial2.pdb
+E:\MSI\PROJECT. Myself\Material de Estudio\2023-1\Scripting\Parcial2_Scripting\Parcial2\obj\Debug\Parcial2.csproj.AssemblyReference.cache
+E:\MSI\PROJECT. Myself\Material de Estudio\2023-1\Scripting\Parcial2_Scripting\Parcial2\obj\Debug\Parcial2.csproj.CoreCompileInputs.cache
+E:\MSI\PROJECT. Myself\Material de Estudio\2023-1\Scripting\Parcial2_Scripting\Parcial2\obj\Debug\Parcial2.exe
+E:\MSI\PROJECT. Myself\Material de Estudio\2023-1\Scripting\Parcial2_Scripting\Parcial2\obj\Debug\Parcial2.pdb

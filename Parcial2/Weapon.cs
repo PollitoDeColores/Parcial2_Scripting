@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace Parcial2
 {
-    class Program
+    class Weapon: Gearing
     {
-        static void Main(string[] args)
-        {
-
-        }
     }
 }
