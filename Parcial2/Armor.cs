@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Parcial2
 {
-    class Armor: Gearing
+    public class Armor: Gearing
     {
 
     }

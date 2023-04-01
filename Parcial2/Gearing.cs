@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Parcial2
 {
-    class Gearing
+    public class Gearing
     {
         internal string name;
         internal int pwr;
         internal int durability;
-        internal enum CharClass
+        public enum CharClass
         {
             Human,
             Beast,

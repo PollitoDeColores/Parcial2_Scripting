@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Parcial2
 {
-    class Character
+    public class Character
     {
         internal string name;
         internal int hp;
@@ -14,7 +14,7 @@ namespace Parcial2
         internal Armor armor;
         internal int baseatk;
         internal int basedef;
-        internal enum CharClass{
+        public enum CharClass{
             Human,
             Beast,
             Hybrid
@@ -27,7 +27,7 @@ namespace Parcial2
             name = "Test Subject";
             hp = 1;
             baseatk = 1;
-            basedef = 0;
+            basedef = 1;
             species = CharClass.Human;
             wpn = null;
             armor = null;
@@ -41,8 +41,8 @@ namespace Parcial2
             Console.WriteLine("As not defense was introduced, the base defense will be 0.");
             Console.WriteLine("As not species was introduced, the default species (human) will be applied");
             hp = 1;
-            baseatk = 0;
-            basedef = 0;
+            baseatk = 1;
+            basedef = 1;
             species = CharClass.Human;
             wpn = null;
             armor = null;
@@ -61,8 +61,8 @@ namespace Parcial2
             Console.WriteLine("As not attack was introduced, the base attack will be 0.");
             Console.WriteLine("As not defense was introduced, the base defense will be 0.");
             Console.WriteLine("As not species was introduced, the default species (human) will be applied");
-            baseatk = 0;
-            basedef = 0;
+            baseatk = 1;
+            basedef = 1;
             species = CharClass.Human;
             wpn = null;
             armor = null;
@@ -84,12 +84,12 @@ namespace Parcial2
             else
             {
                 Console.WriteLine("The character cannot be created with negative base attack");
-                baseatk = 0;
+                baseatk = 1;
             }
 
             Console.WriteLine("As not defense was introduced, the base defense will be 0.");
             Console.WriteLine("As not species was introduced, the default species (human) will be applied");
-            basedef = 0;
+            basedef = 1;
             species = CharClass.Human;
             wpn = null;
             armor = null;
@@ -111,7 +111,7 @@ namespace Parcial2
             else
             {
                 Console.WriteLine("The character cannot be created with negative base attack");
-                baseatk = 0;
+                baseatk = 1;
             }
 
             if (DEF >= 0)
@@ -119,7 +119,7 @@ namespace Parcial2
             else
             {
                 Console.WriteLine("The character cannot be created with negative base defense");
-                basedef = 0;
+                basedef = 1;
             }
 
             Console.WriteLine("As not species was introduced, the default species (human) will be applied");
@@ -144,7 +144,7 @@ namespace Parcial2
             else
             {
                 Console.WriteLine("The character cannot be created with negative base attack");
-                baseatk = 0;
+                baseatk = 1;
             }
 
             if (DEF >= 0)
@@ -152,7 +152,7 @@ namespace Parcial2
             else
             {
                 Console.WriteLine("The character cannot be created with negative base defense");
-                basedef = 0;
+                basedef = 1;
             }
 
             species = Species;
