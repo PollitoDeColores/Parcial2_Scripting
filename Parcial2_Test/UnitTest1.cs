@@ -51,17 +51,22 @@ namespace Parcial2_Test
         }
 
         [TestMethod]
-        public void OverrideGearing()
+        public void OverrideGearingAlways()
         {
             //Instantiate
             Gearing testArmor = new Gearing("TestG1", 10, 8, Gearing.GearClass.Armor);
             Gearing testArmor2 = new Gearing("TestG1", 16, 25, Gearing.GearClass.Armor);
+            Gearing testWeapon1 = new Gearing("TestW1", 16, 25, Gearing.GearClass.Weapon);
+            Gearing testWeapon2 = new Gearing("TestW1", 85, 10, Gearing.GearClass.Weapon);
             Character testSubject3 = new Character("TestC", 18, 11, 61, Character.CharClass.Hybrid);
             //Act
             testSubject3.equip(testArmor);
+            testSubject3.equip(testWeapon1);
             testSubject3.equip(testArmor2);
+            testSubject3.equip(testWeapon2);
             //Assert
             Assert.IsTrue(testSubject3.armor == testArmor2);
+            Assert.IsTrue(testSubject3.wpn == testWeapon2);
         }
 
         [TestMethod]
@@ -185,5 +190,28 @@ namespace Parcial2_Test
             Assert.AreEqual(expectedHP, testArmor2.durability);
             Assert.AreEqual(expectedHP, testweapon.durability);
         }
+
+        [TestMethod]
+        public void BrokenGear() //As gear cannot be created with 0 durability, we need to destroy them first, so the "battle" will be part of the Instantiation part
+        {
+            //Instantiate
+            Character testSubject = new Character("TestC", 10, 5, 6, Character.CharClass.Hybrid);
+            Character testSubject2 = new Character("TestC2", 10, 5, 6, Character.CharClass.Human);
+            Gearing testweapon = new Gearing("TestG1", 3, 1, Gearing.GearClass.Weapon);
+            Gearing testArmor2 = new Gearing("TestG1", 16, 1, Gearing.GearClass.Armor);
+            testSubject.equip(testweapon);
+            testSubject2.equip(testArmor2);
+            testSubject2.recieveDamage(testSubject);
+
+            //Act
+            testSubject.equip(testArmor2);
+            testSubject2.equip(testweapon);
+
+            //Assert
+            Assert.IsTrue(testSubject.armor == null);
+            Assert.IsTrue(testSubject2.wpn == null);
+
+        }
+
     }
 }

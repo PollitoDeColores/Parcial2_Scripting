@@ -8,12 +8,12 @@ namespace Parcial2
 {
     public class Character
     {
-        public string name;
+        public readonly string  name;
         public int hp;
         public Gearing wpn = null;
         public Gearing armor = null;
-        public int baseatk;
-        public int basedef;
+        public readonly int baseatk;
+        public readonly int basedef;
         public enum CharClass{
             Human,
             Beast,
