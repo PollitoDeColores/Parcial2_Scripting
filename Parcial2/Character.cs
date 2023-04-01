@@ -8,18 +8,18 @@ namespace Parcial2
 {
     public class Character
     {
-        internal string name;
-        internal int hp;
-        internal Weapon wpn;
-        internal Armor armor;
-        internal int baseatk;
-        internal int basedef;
+        public string name;
+        public int hp;
+        public Gearing wpn = null;
+        public Gearing armor = null;
+        public int baseatk;
+        public int basedef;
         public enum CharClass{
             Human,
             Beast,
             Hybrid
         }
-        CharClass species;
+        public readonly CharClass species;
 
 
         public Character()
@@ -168,16 +168,19 @@ namespace Parcial2
                 if (rival.wpn != null)
                 {
                     int damage = rival.wpn.pwr + rival.baseatk;
-                    this.armor.durability -= (damage / 2) + 1;
+                    this.armor.durability -= (damage / 2);
                     if (armor.durability < 0)
                     {
+                        this.armor.durability = 0;
                         this.unequip(this.armor);
                     }
                         rival.useWeapon();
                 }
                 else
                 {
-                    this.armor.durability -= (rival.baseatk / 2) + 1;
+                    this.armor.durability -= (rival.baseatk / 2);
+                    if (rival.baseatk / 2 == 0)
+                        this.armor.durability--;
                     if (armor.durability < 0)
                     {
                         this.unequip(this.armor);
@@ -187,19 +190,15 @@ namespace Parcial2
             }
             else
             {
-                int damage;
+                int damage = rival.baseatk;
 
                 if (rival.wpn != null)
                 {
-                    damage = rival.baseatk + rival.wpn.pwr;
+                    damage += rival.wpn.pwr;
                     rival.useWeapon();
                 }
-                else
-                {
-                    damage = rival.baseatk;
-                }
-                this.hp -= damage;
-                if (this.hp > 0)
+                this.hp = this.hp - damage;
+                if (this.hp < 0)
                 {
                     this.hp = 0;
                     Console.WriteLine("Character died.");
@@ -210,47 +209,57 @@ namespace Parcial2
         public void useWeapon()
         {
             this.wpn.durability--;
-            if (this.wpn.durability == 0)
+            if (this.wpn.durability < 1)
                 this.unequip(this.wpn);
         }
-        public void equip(Armor gear)
+        public void equip(Gearing gear)
         {
             if(gear.durability > 0)
             {
-                if(gear.wearableSpecies == Armor.CharClass.Any || gear.wearableSpecies.Equals(this.species))
+                if(gear.wearableSpecies == Gearing.CharClass.Any || (int)gear.wearableSpecies == (int)this.species)
                 {
-                    this.armor = gear;
+                    if (gear.gearType == Gearing.GearClass.Armor)
+                        //if (this.armor !=null)
+                        //{
+                            this.armor = gear;
+                        //}
+                        /*else
+                        {
+                            unequip(this.armor);
+                            this.armor = gear;
+                        }*/
+                    else
+                    {
+                        //if (this.wpn != null)
+                        //{
+                            this.wpn = gear;
+                        //}
+                        //else
+                        //{
+                            //unequip(this.wpn);
+                            //this.wpn = gear;
+                        //}
+                    }
                 }
                 else
-                    Console.WriteLine("This armor cannot be used by the species of the character.");
+                    Console.WriteLine("This gear cannot be used by the species of the character.");
             }
             else
-                Console.WriteLine("This armor is too damaged to be used, better go and sell it like scrap");
+                Console.WriteLine("This gear is too damaged to be used, better go and sell it like scrap");
         }
 
-        public void equip(Weapon gear)
+        public void unequip(Gearing gear)
         {
+            if (gear.gearType == Gearing.GearClass.Armor)
             {
-                if (gear.durability > 0)
-                {
-                    if (gear.wearableSpecies == Weapon.CharClass.Any || gear.wearableSpecies.Equals(this.species))
-                    {
-                        this.wpn = gear;
-                    }
-                    else
-                        Console.WriteLine("This weapon cannot be used by the species of the character.");
-                }
-                else
-                    Console.WriteLine("This weapon is too damaged to be used, better go and sell it like scrap");
+                this.armor = null;
+                //destroy used armor
             }
-        }
-        public void unequip(Armor gear)
-        {
-            this.armor = null;
-        }
-        public void unequip(Weapon gear)
-        {
-            this.wpn = null;
+            else
+            {
+                this.wpn = null;
+                //destroy used weapon
+            }
         }
 
     }

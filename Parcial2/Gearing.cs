@@ -8,9 +8,9 @@ namespace Parcial2
 {
     public class Gearing
     {
-        internal string name;
-        internal int pwr;
-        internal int durability;
+        public readonly string name;
+        public readonly int pwr;
+        public int durability;
         public enum CharClass
         {
             Human,
@@ -18,18 +18,26 @@ namespace Parcial2
             Hybrid,
             Any
         }
-        internal CharClass wearableSpecies;
-
-
-        public Gearing()
+        public readonly CharClass wearableSpecies;
+        public enum GearClass
         {
+            Weapon,
+            Armor             
+        }
+        public readonly GearClass gearType;
+
+
+        public Gearing(GearClass type)
+        {
+            gearType = type;
             name = "Test Gear";
             pwr = 1;
             durability = 1;
             wearableSpecies = CharClass.Any;
         }
-        public Gearing(string Name)
+        public Gearing(string Name, GearClass type)
         {
+            gearType = type;
             name = Name;
             Console.WriteLine("As no power was specified, the power will be 1");
             Console.WriteLine("As no durability was specified, the durability will be 1");
@@ -38,8 +46,9 @@ namespace Parcial2
             durability = 1;
             wearableSpecies = CharClass.Any;
         }
-        public Gearing(string Name, int Power)
+        public Gearing(string Name, int Power, GearClass type)
         {
+            gearType = type;
             name = Name;
             if (Power > 0)
                 pwr = Power;
@@ -54,8 +63,9 @@ namespace Parcial2
             durability = 1;
             wearableSpecies = CharClass.Any;
         }
-        public Gearing(string Name, int Power, int Durability)
+        public Gearing(string Name, int Power, int Durability, GearClass type)
         {
+            gearType = type;
             name = Name;
             if (Power > 0)
                 pwr = Power;
@@ -75,8 +85,9 @@ namespace Parcial2
             Console.WriteLine("As no wearable species were specified, any species could use this gear");
             wearableSpecies = CharClass.Any;
         }
-        public Gearing(string Name, int Power, int Durability, CharClass Species)
+        public Gearing(string Name, int Power, int Durability, CharClass Species, GearClass type)
         {
+            gearType = type;
             name = Name;
             if (Power > 0)
                 pwr = Power;
