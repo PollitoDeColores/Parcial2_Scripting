@@ -8,5 +8,6 @@ namespace Parcial2
 {
     class Armor: Gearing
     {
+
     }
 }

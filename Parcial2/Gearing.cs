@@ -18,7 +18,7 @@ namespace Parcial2
             Hybrid,
             Any
         }
-        CharClass wearableSpecies;
+        internal CharClass wearableSpecies;
 
 
         public Gearing()
